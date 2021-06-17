@@ -1,0 +1,574 @@
+/* 全局部分 */
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+button {
+    border: 0;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+html {
+    font-size: 16px;
+    z-index: 0;
+}
+
+span {
+    display: inline-block;
+}
+
+body {
+    overflow-y: auto;
+}
+
+.content {
+    background-image: url("../img/paint.jpg") ;
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-repeat: repeat-y;
+    background-size: cover;
+}
+
+.background-image-cover {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow-y: auto;
+}
+
+.background-image-cover::before {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    z-index: 0;
+}
+
+/* 顶部工具栏 */
+
+.toolbar {
+    width: 100%;
+    height: 4rem;
+    position: fixed;
+    background-color: rgba(111, 205, 255, 0.95);
+    border-radius: 2px;
+    z-index: 50;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.logo {
+    display: inline-block;
+    padding: 1.1rem 0 0 1.5rem;
+    float: left;
+    font-size: 1.8rem;
+    font-family: Candara, cursive;
+}
+
+.toolbar-item {
+    float: right;
+    display: inline-block;
+    padding:  1rem 1rem 1rem 0.75rem;
+    height: 2.5rem;
+    width: 2.5rem;
+    transition: 0.2s all ease;
+}
+
+.toolbar-item:hover {
+    background-color: rgba(91, 167, 255, 0.8);
+}
+
+.menu-btn {
+    display: inline-block;
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+.toolbar-img {
+    height: inherit;
+    width: inherit;
+}
+
+/* 文件菜单 */
+
+.menu-list{
+    display: none;
+    float: right;
+    width: 35%;
+    position: fixed;
+    right: 0;
+    z-index: 2000;
+    margin: 4.5rem 0 0 0;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: -2px 2px 5px grey;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 10px;
+    transition: 0.1s all ease;
+}
+
+.menu-item {
+    color: black;
+    font-size: 1rem;
+    transition: 0.2s all ease;
+}
+
+.menu-item:first-child {
+    margin-top: 0.5rem;
+}
+
+.menu-item:last-child {
+    margin-bottom: 0.5rem;
+}
+
+.menu-item-btn {
+    margin: 0.2rem;
+    appearance: none;
+    width: 100%;
+    height: 2rem;
+    font-size: 1rem;
+    transition: 0.2s all ease;
+}
+
+.menu-item-btn:hover {
+    background-color: #aaaaaa;
+    color: white;
+}
+
+.menu-list hr {
+    color: #aaaaaa;
+}
+
+/* Todo条目*/
+
+.todo-list-container {
+    height: auto;
+}
+
+.todo-list {
+    position: relative;
+    z-index: 10;
+    height: auto;
+}
+
+.todo-list:first-child {
+    padding-top: 5rem;
+}
+
+.todo-item {
+    width: 95%;
+    height: 5rem;
+    font-size: 1.8rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
+    margin-left: 3%;
+    box-shadow: 2px 2px 1px darkgray;
+    position: inherit;
+    z-index: 10;
+    transition: 0.2s all ease;
+}
+
+.todo-id {
+    width: 0;
+    display: none;
+}
+
+.todo-item:hover {
+    background-color: rgba(219, 219, 219, 0.91);
+}
+
+.todo-prior, .todo-desc {
+    display: inline-block;
+    vertical-align: middle;
+    align-content: center;
+    align-items: center;
+}
+
+.todo-item label {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+    position: inherit;
+    z-index: 10;
+}
+
+.todo-check {
+    appearance: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 1.8rem 0 1.5rem 1.8rem;
+    border: 2px solid grey;
+    border-radius: 50%;
+    background-color: white;
+    vertical-align: middle;
+    position: inherit;
+    z-index: 10;
+    transition: 0.2s all ease;
+}
+
+.todo-check:checked {
+    text-align: center;
+    border: 8px solid rgba(111, 205, 255, 0.95);
+}
+
+.todo-prior {
+    /*margin-top: 0.8rem;*/
+    width: 1.8rem;
+    padding: 0 0.2rem 0 0.2rem;
+    position: inherit;
+    z-index: 10;
+    text-align: center;
+}
+
+.todo-desc {
+    font-size: 1.2rem;
+    font-family: "Roboto Light", sans-serif;
+    min-width: 10%;
+    max-width: 60%;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    word-break:keep-all;
+    position: relative;
+    z-index: 10;
+    transition: 0.2s all ease;
+}
+
+.todo-delete {
+    display: inline-block;
+    /*display: inline-block;*/
+    position: absolute;
+    z-index: 10;
+    right: 5%;
+    width: 12%;
+    height: 2.5rem;
+    margin-top: 1.25rem;
+    background-color: #ff7285;
+    border: 0;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.1rem;
+    transition: 0.2s all ease;
+}
+
+.todo-delete:hover {
+    background-color: #ffe0e0;
+    color: black;
+}
+
+
+/* 提示信息 */
+
+.hint-info-container {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    height: 2rem;
+    margin-bottom: 2rem;
+}
+
+.hint-info {
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    margin-top: 1.5rem;
+    margin-left: 25%;
+    width: 50%;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 1px 2px #aaaaaa;
+    border-radius: 10px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+
+.hint-info span{
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding: 0.2rem 0 0.2rem 0;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+}
+
+.todo-count {
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+
+.hint-info hr {
+    margin-left: 12.5%;
+    width: 75%;
+}
+
+.login-user {
+    font-size: 0.8rem;
+    margin-bottom: 0.2rem;
+}
+
+
+/* 对话框 */
+
+.dialog {
+    position: fixed;
+    display: none;
+    z-index: 1000;
+    transition: 0.2s all linear;
+}
+
+.dialog-pop {
+    position: inherit;
+    display: inherit;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 5px rgba(255,255,255, 0.6);
+    top: 10%;
+    left: 12%;
+    width: 76%;
+    min-height: 40%;
+    max-height: 80%;
+    z-index: 2000;
+    overflow-y: auto;
+}
+
+.dialog-cover {
+    position: inherit;
+    display: inherit;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1999;
+}
+
+.bounceIn {
+    animation-name: bounceIn;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.dialog-body {
+    padding-left: 5%;
+    min-height: 4rem;
+    max-height: 30rem;
+    width: 95%;
+}
+
+/* 弹出框关闭按钮 */
+.dialog-close {
+    text-align: right;
+    height: 1.2rem;
+    padding-top: 0.7rem;
+    padding-right: 1.5rem;
+    color: #aaa;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.dialog-close:hover {
+    color: black;
+    cursor: pointer;
+}
+
+/* 对话框名 */
+.dialog-title {
+    height: 3rem ;
+    font-size: 1.8rem;
+    padding: 0.8rem 0 0.4rem 0.5rem;
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+
+.dialog-form {
+    min-height: 5rem;
+    max-height: 30rem;
+    position: relative;
+}
+
+
+/* 新任务名称 */
+.dialog-label {
+    display: block;
+    padding-left: 2%;
+    padding-bottom: 0.5rem;
+    height: 3rem;
+}
+
+.dialog-input {
+    appearance: none;
+    width: 88%;
+    height: 2.5rem;
+    outline: 1px solid transparent;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background-color: #e2e2e2;
+    padding-left: 0.5rem;
+    font-size: 1.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: 0.1s all linear;
+}
+
+.dialog-input:focus {
+    background-color: white;
+    outline: 2px solid rgba(111, 205, 255, 0.95);
+}
+
+/* 页底选项 */
+
+.dialog-option {
+    top: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog-option button {
+    align-self: flex-end;
+    height: 2rem;
+    line-height: 1rem;
+    font-size: 1.4rem;
+    padding: 0.5rem;
+    margin-right: 1rem;
+    vertical-align: top;
+    background-color: rgba(111, 205, 255, 0.95);
+    color: white;
+    transition: 0.2s all ease;
+}
+
+.dialog-option button:hover {
+    background-color: #e2e2e2;
+    color: black;
+    border-radius: 5px;
+}
+
+.register-navi {
+    font-size: 0.8rem;
+    display: block;
+    padding: 0.4rem 0.5rem 0.4em 0.5rem;
+    margin-left: 2%;
+    margin-bottom: 0.5rem;
+    width: fit-content;
+    background-color: #f0f0f0;
+    border-radius: 6px;
+    transition: 0.2s all ease;
+    color: #484848;
+}
+
+.register-navi:hover {
+    background-color: white;
+    color: black;
+}
+
+/* 优先级部分 */
+
+.dialog-form h3 {
+    padding-top: 0.2rem;
+    padding-left: 0.5rem;
+    padding-bottom: 0.6rem;
+    font-size: 1.3rem;
+}
+
+.dialog-prior {
+    padding-left: 1rem;
+    width: 88%;
+}
+
+.dialog-prior-label {
+    height: 2rem;
+    padding-top: 0.25rem;
+    padding-left: 1rem;
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.ratio-desc {
+    font-size: 1.1rem;
+}
+
+.prior-ratio {
+    appearance: none;
+    border-radius: 50%;
+    width: 1.4rem;
+    height: 1.4rem;
+    margin-right: 0.5rem;
+    margin-top: 0.1rem;
+    transition: 0.2s border ease;
+    background-color: #e2e2e2;
+}
+.prior-ratio:checked {
+    background-color: white;
+    border: 6px solid rgba(111, 205, 255, 0.95);
+}
+
+.ratio-desc {
+    margin-right: 1rem;
+}
+
+.high-prior {
+    color: red;
+}
+
+.middle-prior {
+    color: #eeca39;
+}
+
+.low-prior {
+    color: rgba(99, 161, 234, 0.95);
+}
+
+.no-prior {
+    color: #aaaaaa;
+}
+
+
+/* 底部快捷按钮 */
+
+.shortcut {
+    position: fixed;
+    display: block;
+    bottom: 10%;
+    right: 10%;
+    z-index: 100;
+}
+
+.shortcut-substrate {
+    appearance: none;
+    position: inherit;
+    background-color: rgba(86, 197, 255, 0.95);
+    box-shadow: 2px 3px 4px grey;
+    border-radius: 50%;
+    bottom: 10%;
+    right: 10%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s all ease-in-out;
+}
+
+.shortcut-substrate:hover {
+    background-color: rgba(170, 170, 170, 0.95);
+}
+
+.shortcut-img {
+    width: 60%;
+    height: 60%;
+}

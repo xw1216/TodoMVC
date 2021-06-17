@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1">
+    <title>Outspace Todo</title>
+    <link rel="stylesheet" type="text/css" href="./css/todo.css">
+</head>
+
+<body>
+    <div class="content">
+    <div class="background-image-cover">
+    <header>
+        <!-- 页顶工具栏 -->
+        <div class="toolbar">
+            <!-- 顶部左侧LOGO -->
+            <div class="logo">
+                <span class="logo-word">TODO</span>
+            </div>
+            <!-- 顶部右侧控制项目 -->
+            <div class="toolbar-item" id="menu">
+                <button class="menu-btn">
+                    <img class="toolbar-img" src="./img/menu.svg" alt=""/>
+                </button>
+
+            </div>
+            <div class="toolbar-item" id="account">
+                <button class="menu-btn">
+                    <img class="toolbar-img" src="./img/user.svg" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="menu-list">
+            <div class="menu-item">
+                <button class="menu-item-btn" id="menu-all-clear" type="button">全部完成</button>
+            </div>
+            <div class="menu-item">
+                <button class="menu-item-btn" id="menu-all-reset" type="button">全部重置</button>
+            </div>
+            <hr/>
+            <div class="menu-item">
+                <button class="menu-item-btn" id="menu-done-delete" type="button">删除已完成</button>
+            </div>
+            <hr/>
+            <div class="menu-item">
+                <button class="menu-item-btn" id="menu-all-display" type="button">显示全部</button>
+            </div>
+            <div class="menu-item">
+                <button class="menu-item-btn" id="menu-prior-display" type="button">显示高优先</button>
+            </div>
+            <div class="menu-item">
+                <button class="menu-item-btn" id="menu-undo-display" type="button">显示未完成</button>
+            </div>
+            <div class="menu-item">
+                <button class="menu-item-btn" id="menu-done-display" type="button">显示已完成</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Todolist 任务展示区域 -->
+    <section>
+        <div class="todo-list-container">
+        <div class="todo-list">
+            <!-- Todo项展示 -->
+
+            <!-- 列表底部的提示框 -->
+            <div class="hint-info-container">
+                <div class="hint-info">
+                    <span class="item-count">
+                        <span id="todo-count">0</span>
+                        项待办
+                    </span>
+                    <span class="filter-type">默认</span>
+                    <hr/>
+                    <span class="login-user">Guest</span>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- 遮罩对话框 -->
+    <section>
+        <div class="dialog">
+            <div class="dialog-cover"></div>
+            <div class="dialog-pop bounceIn">
+                <div class="dialog-close">关闭</div>
+                <div class="dialog-body">
+                    <h2 class="dialog-title">更改任务</h2>
+                    <form class="dialog-form">
+                        <label class="dialog-label">
+                            <input class="dialog-input" type="text" id="main-input" placeholder="任务名称" required>
+                        </label>
+                        <!-- 对话框可变区域 -->
+                        <div class="dialog-movable">
+                        <h3>优先级</h3>
+                        <div class="dialog-prior">
+                            <label class="dialog-prior-label">
+                                <input class="prior-ratio" type="radio" name="prior">
+                                <span class="ratio-desc">高</span>
+                                <span class="high-prior">!!!</span>
+                            </label>
+                            <label class="dialog-prior-label">
+                                <input class="prior-ratio" type="radio" name="prior">
+                                <span class="ratio-desc">中</span>
+                                <span class="middle-prior">!!</span>
+                            </label>
+                            <label class="dialog-prior-label">
+                                <input class="prior-ratio" type="radio" name="prior">
+                                <span class="ratio-desc">低</span>
+                                <span class="low-prior">!</span>
+                            </label>
+                            <label class="dialog-prior-label">
+                                <input class="prior-ratio" type="radio" name="prior" checked="checked">
+                                <span class="ratio-desc">无</span>
+                                <span class="no-prior">~</span>
+                            </label>
+                        </div>
+                        </div>
+                        <div class="dialog-option">
+                            <button class="dialog-cancel" type="button">取消</button>
+                            <button class="dialog-apply" type="button">确认</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页底新建快捷按钮 -->
+    <section>
+        <div class="shortcut">
+            <button class="shortcut-substrate">
+                <img class="shortcut-img" src="./img/add.svg" alt="">
+            </button>
+        </div>
+    </section>
+    </div>
+    </div>
+    <script src="./js/todo.js"></script>
+</body>
+</html>
