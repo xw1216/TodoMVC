@@ -14,7 +14,7 @@
 
 
 
-![](./img/screenshot.png)
+<img src="./img/screenshot.png" style="zoom:67%;" />
 
 
 
